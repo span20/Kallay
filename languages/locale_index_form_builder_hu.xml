@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<area name="index_form_builder" lang="hu">
+    <variable name="back_button"><![CDATA[vissza]]></variable>
+    <variable name="field_email"><![CDATA[E-mail cím]]></variable>
+    <variable name="field_name"><![CDATA[Név]]></variable>
+    <variable name="form_builder_required_note"><![CDATA[A <font color="red">*</font>-al jelölt mezõk kitöltése kötelezõ!]]></variable>
+    <variable name="reset_button"><![CDATA[Mégsem]]></variable>
+    <variable name="submit_button"><![CDATA[Elküldés]]></variable>
+</area>

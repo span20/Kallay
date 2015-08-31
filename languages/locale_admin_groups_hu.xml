@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<area name="admin_groups" lang="hu">
+    <variable name="confirm_del"><![CDATA[Valóban törölni akarja ezt a csoportot?]]></variable>
+    <variable name="error_deleted"><![CDATA[Nem állított be értéket a Törölt mezõnél!]]></variable>
+    <variable name="error_groupnum"><![CDATA[Nem hozhat létre több csoportot!]]></variable>
+    <variable name="error_name_exists"><![CDATA[Ilyen nevû csoport már létezik!]]></variable>
+    <variable name="error_no_name"><![CDATA[Nem töltötte ki a Csoport neve mezõt!]]></variable>
+    <variable name="error_no_premission"><![CDATA[Nincs joga az adott funkció használatához!]]></variable>
+    <variable name="field_adminby"><![CDATA[szerint]]></variable>
+    <variable name="field_deleted"><![CDATA[Törölt]]></variable>
+    <variable name="field_list_action"><![CDATA[Mûvelet]]></variable>
+    <variable name="field_list_delete"><![CDATA[Törlés]]></variable>
+    <variable name="field_list_deleted"><![CDATA[Törölt]]></variable>
+    <variable name="field_list_modify"><![CDATA[Módosítás]]></variable>
+    <variable name="field_list_name"><![CDATA[Név]]></variable>
+    <variable name="field_list_title"><![CDATA[Csoportok listája]]></variable>
+    <variable name="field_list_users"><![CDATA[Tagok:]]></variable>
+    <variable name="field_name"><![CDATA[Csoport neve]]></variable>
+    <variable name="field_order"><![CDATA[sorrendben]]></variable>
+    <variable name="field_orderasc"><![CDATA[növekvõ]]></variable>
+    <variable name="field_orderby"><![CDATA[Rendezés]]></variable>
+    <variable name="field_orderdesc"><![CDATA[csökkenõ]]></variable>
+    <variable name="field_submitorder"><![CDATA[Rendezés]]></variable>
+    <variable name="field_users"><![CDATA[Felhasználók]]></variable>
+    <variable name="form_header"><![CDATA[Csoportok listája]]></variable>
+    <variable name="form_no"><![CDATA[Nem]]></variable>
+    <variable name="form_required_note"><![CDATA[A <span class='error'>*</span>-gal jelölt mezõk kitöltése kötelezõ!]]></variable>
+    <variable name="form_reset"><![CDATA[Mégsem]]></variable>
+    <variable name="form_submit"><![CDATA[Rendben]]></variable>
+    <variable name="form_yes"><![CDATA[Igen]]></variable>
+    <variable name="title"><![CDATA[Csoportkezelés]]></variable>
+    <variable name="title_add"><![CDATA[Csoport hozzáadása]]></variable>
+    <variable name="title_mod"><![CDATA[Csoport módosítása]]></variable>
+    <variable name="warning_no_group"><![CDATA[Nincs egyetlen csoport sem!]]></variable>
+</area>

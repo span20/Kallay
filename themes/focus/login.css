@@ -1,0 +1,155 @@
+/**
+ * Table
+ */
+html,body { height: 100%; margin: 0; padding:0;}
+body {
+	height: 100%;
+	overflow:hidden;
+	margin:0;padding:0;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	margin: 0;
+	padding: 0;
+	background-color: #FFFFFF;
+	color: #688DA8;
+}
+
+#outer {
+	height: 100%;
+	width: 100%;
+}
+#outer[id] {
+	display: table; 
+	position: static;
+}
+#middle {
+	position: absolute;
+	top: 50%;
+	left: 0px;
+	width: 100%;
+}
+#middle[id]	{
+	display: table-cell;vertical-align:middle;position:static;
+}
+#inner {
+	position: relative; 
+	top: -50%;
+	left: 0;
+	width: 100%;
+	height: 470px;
+	overflow:hidden;
+}
+
+/* Header */
+#header {
+	position: absolute; top:0;left:0;
+	width: 100%;
+	background: url('images/admin/header_center.gif') repeat-x;
+	height: 61px;
+}
+#header_left {
+	float: left;
+	background-image: url('images/admin/header_left.jpg');
+	height: 61px;
+	width: 208px;
+}
+#menu {
+	position: absolute; 
+	top: 61px; left: 0;
+	background: url('images/admin/menu_bg.jpg') repeat-x;
+	line-height: 24px;
+	width: 100%;
+}
+
+
+#login {
+	position: absolute;
+	top: 30%;
+	left: 30%;
+	height: 200px; 
+	width: 392px;
+	margin: auto;
+	text-align:center;
+}
+
+
+#l_top {
+    background: url('images/admin/login_top.jpg') no-repeat top left; 
+	width: 392px;
+	height: 16px;
+}
+
+#l_content {
+	background: url('images/admin/login_border.jpg') repeat-y; 
+	width: 392px;
+}
+
+#l_bottom {
+	background: url('images/admin/login_bottom.jpg') no-repeat bottom left; 
+	height: 22px;
+	width: 392px;
+}
+
+.l_empty {
+	background-color: #E6EDF2;
+	height: 19px;
+	width: 383px;
+	margin: auto;
+}
+.submit {
+	width: 44px;
+	height: 36px;
+	padding: 36px 0 0 0; margin: 0; border: 0;
+	background: transparent url(images/admin/ok_small.gif) no-repeat center bottom;
+	overflow:hidden;
+	cursor: pointer;
+	cursor: hand;
+} html>body .submit {
+	text-indent: -1000px;
+	padding: 0;
+}
+
+.reset {
+	text-indent: -9999px;
+	background: url('images/admin/cancel_small.gif');
+	width: 44px;
+	height: 36px;
+	border: 0;
+	cursor: pointer;
+	cursor: hand;
+}
+
+
+#l_form {
+	background-color: #E6EDF2;
+	width: 383px;
+	height: 195px;
+	margin: auto;
+}
+
+#loginpic {
+	float: left;
+	background: url('images/admin/login.jpg');
+	width: 162px;
+	height: 195px;
+}
+#footer {
+	position: absolute;
+	left: 0; bottom: 0;
+	width: 100%;
+	height: 24px;
+	background: #688DA8;
+	color: #fff;
+	font-size: 9px;
+	font-weight: bold;
+}
+#footer_left {
+	float: left;
+	line-height: 24px;
+	padding-left: 10px;
+}
+#footer_right {
+	float:right;
+	line-height: 24px;
+	padding-right: 10px;
+}

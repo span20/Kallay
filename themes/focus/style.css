@@ -1,0 +1,53 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,500,700&subset=latin,latin-ext);
+@import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic);
+
+html { height: 100%; }
+body { 
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px; 
+	margin: 0; 
+	padding: 0; 
+	text-align: left; 
+	background-image: url('images/bg.jpg'); 
+}
+img { border: 0; }
+form { margin: 0; }
+
+.header  { cursor: pointer; }
+
+.container { max-width: 1010px; }
+
+.dropdown:hover .dropdown-menu {
+	display: block;
+}
+.navbar { border-radius: 0; border: none; margin-bottom: 0; }
+.navbar-inverse .navbar-nav > li > a { text-transform: uppercase; color: #ffffff; }
+.sidebar { background: #f0ede9; padding: 10px; }
+.sidebar h4 { color: #4c76ba; text-transform: uppercase; font-size: 17px; border-bottom: 1px solid #c7bcb0; padding-bottom: 10px; }
+.sidebar_box { color: #808080; font-size: 14px; }
+.sidebar_box .row > .pull-right { text-align: right; color: #4c76ba; }
+.white-bg { background: #ffffff; padding: 15px 0px 0px 0px; }
+
+.news_title { color: #EBD30A; }
+
+.cont_text { color: #808080; }
+.cont_text h2 { color: #4c76ba; text-transform: uppercase; }
+
+.footer { background: #c7bcb0; height: 70px; color: #ffffff; line-height: 70px; padding-left: 25px; }
+
+.gallery_item { position: relative; text-align: center; cursor: pointer; }
+.gal_title { font-family: 'Droid Serif', serif; font-style: italic; font-size: 17px; background: url('images/grey_bg.png'); position: relative; bottom: 30px; text-align: center; width: 100%; padding: 5px 0; color: #ffffff; }
+
+.dropdown .kek:hover, .kekactive { color: #4a74b9 !important; }
+.dropdown .narancs:hover, .narancsactive { color: #ebd30a !important; }
+.dropdown .rozsaszin:hover, .rozsaszinactive { color: #f65acb !important; }
+.dropdown .zold:hover, .zoldactive { color: #95ba30 !important; }
+.dropdown .narancs2:hover, .narancs2active { color: #f9a125 !important; }
+
+.kek h2{ color: #4a74b9 !important; text-transform: uppercase; }
+.narancs h2 { color: #ebd30a !important; text-transform: uppercase; }
+.rozsaszin h2 { color: #f65acb !important; text-transform: uppercase; }
+.zold h2 { color: #95ba30 !important; text-transform: uppercase; }
+.narancs2 h2 { color: #f9a125 !important; text-transform: uppercase; }
+
+.gyengenlato { padding-top: 10px; }

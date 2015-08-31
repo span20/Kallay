@@ -1,0 +1,22 @@
+<div id="header">
+    <div id="header_logo">
+            <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0" width="123" height="115" id="animated_logo" align="middle">
+                <param name="allowScriptAccess" value="sameDomain" />
+                <param name="allowFullScreen" value="false" />
+                <param name="movie" value="animated_logo.swf" /><param name="quality" value="high" /><param name="bgcolor" value="#ffffff" />	<embed src="animated_logo.swf" quality="high" bgcolor="#ffffff" width="123" height="115" name="animated_logo" align="middle" allowScriptAccess="sameDomain" allowFullScreen="false" type="application/x-shockwave-flash" pluginspage="http://www.adobe.com/go/getflashplayer" />
+            </object>
+    </div>
+    <div id="header_menu">
+        <div id="header_menu_inner">
+            <table cellpadding="0" cellspacing="0" width="802px">
+                <tr>
+            {foreach name=menu from=$sitemenu item=data}
+                <td>
+                    <div class="topmenu" {if $smarty.foreach.menu.first}style="padding-left: 2px;"{/if} {if $smarty.foreach.menu.last}style="padding-right: 0px;"{/if}><a href="index.php?mid={$data.menu_id}"{if $smarty.request.mid eq $data.menu_id}style="color: #5889c7;"{/if} {if $data.mblank == 1}target="_blank"{/if} title="{$data.menu_name}">{$data.menu_name}</a></div>
+                </td>
+            {/foreach}
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

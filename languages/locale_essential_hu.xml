@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<langpackage>
+<area name="config" lang="hu">
+	<variable name="calendar_date_format"><![CDATA[%Y-%m-%d %H:%M:00]]></variable>
+    <variable name="charset"><![CDATA[iso-8859-2]]></variable>
+    <variable name="date_dow_1"><![CDATA[hétfõ]]></variable>
+    <variable name="date_dow_2"><![CDATA[kedd]]></variable>
+    <variable name="date_dow_3"><![CDATA[szerda]]></variable>
+    <variable name="date_dow_4"><![CDATA[csütörtök]]></variable>
+    <variable name="date_dow_5"><![CDATA[péntek]]></variable>
+    <variable name="date_dow_6"><![CDATA[szombat]]></variable>
+    <variable name="date_dow_7"><![CDATA[vasárnap]]></variable>
+	<variable name="date_format_numeric"><![CDATA[{yyyy}.{mm}.{dd}.]]></variable>
+	<variable name="date_format_text"><![CDATA[{yyyy}. {month}. {d}., {dow}]]></variable>
+	<variable name="date_format_time"><![CDATA[{yyyy}.{mm}.{dd}. {hh}:{ii}:{ss}]]></variable>
+	<variable name="date_format_year_month"><![CDATA[{yyyy}. {month}]]></variable>
+    <variable name="date_month_01"><![CDATA[január]]></variable>
+    <variable name="date_month_02"><![CDATA[február]]></variable>
+    <variable name="date_month_03"><![CDATA[március]]></variable>
+    <variable name="date_month_04"><![CDATA[április]]></variable>
+    <variable name="date_month_05"><![CDATA[május]]></variable>
+    <variable name="date_month_06"><![CDATA[június]]></variable>
+    <variable name="date_month_07"><![CDATA[július]]></variable>
+    <variable name="date_month_08"><![CDATA[augusztus]]></variable>
+    <variable name="date_month_09"><![CDATA[szeptember]]></variable>
+    <variable name="date_month_10"><![CDATA[október]]></variable>
+    <variable name="date_month_11"><![CDATA[november]]></variable>
+    <variable name="date_month_12"><![CDATA[december]]></variable>
+    <variable name="error_system"><![CDATA[<pre><b>Rendszerhiba</b><br />Kérjük értesítse a program készítõjét, mert valamit nagyon elrontott!</pre>]]></variable>
+    <variable name="pager_first"><![CDATA[elsõ oldal]]></variable>
+    <variable name="pager_last"><![CDATA[utolsó oldal]]></variable>
+    <variable name="pager_next"><![CDATA[következõ oldal]]></variable>
+    <variable name="pager_prev"><![CDATA[elõzõ oldal]]></variable>
+</area>
+<area name="admin" lang="hu">
+	<variable name="permission_denied"><![CDATA[Hozzáférés megtagadva!]]></variable>
+	<variable name="back"><![CDATA[vissza]]></variable>
+    <variable name="by"><![CDATA[szerint]]></variable>
+    <variable name="center"><![CDATA[Központ]]></variable>
+    <variable name="copyright"><![CDATA[Dolphinet Kft. Minden jog fenntartva!]]></variable>
+    <variable name="footer"><![CDATA[Powered by i-SHARK]]></variable>
+    <variable name="login_bad_login"><![CDATA[Hibás bejelentkezés!]]></variable>
+    <variable name="login_error_required_name"><![CDATA[A bejelentkezési nevet kötelezõ kitölteni!]]></variable>
+    <variable name="login_error_required_pass"><![CDATA[Nem adta meg a jelszót!]]></variable>
+    <variable name="login_header"><![CDATA[Bejelentkezés]]></variable>
+    <variable name="login_name"><![CDATA[Bejelentkezési név]]></variable>
+    <variable name="login_password"><![CDATA[Jelszó]]></variable>
+    <variable name="login_reset"><![CDATA[Törlés]]></variable>
+    <variable name="login_submit"><![CDATA[Bejelentkezés]]></variable>
+    <variable name="logout"><![CDATA[Kilépés]]></variable>
+    <variable name="order"><![CDATA[sorrendben]]></variable>
+    <variable name="orderby"><![CDATA[Rendezés]]></variable>
+    <variable name="order_asc"><![CDATA[növekvõ]]></variable>
+    <variable name="order_desc"><![CDATA[csökkenõ]]></variable>
+    <variable name="order_submit"><![CDATA[Rendezés]]></variable>
+    <variable name="page_not_found"><![CDATA[Nem található a kért oldal!]]></variable>
+    <variable name="title_admin"><![CDATA[iShark Adminisztráció]]></variable>
+</area>
+</langpackage>

@@ -1,0 +1,31 @@
+body { background: #000000; color: #fff; font-size: 18px; line-height: 30px; }
+
+a { color: #ff0 !important; text-decoration: underline; }
+a:focus, a:hover { color: #000000 !important; background: #ff0; }
+
+.navbar-inverse { background: #000; }
+.navbar-inverse .navbar-nav > li > a:focus, .navbar-inverse .navbar-nav > li > a:hover { color: #000000 !important; background: #ff0; }
+
+.dropdown-menu { background: #000; }
+.dropdown-menu > li > a { font-size: 18px; }
+
+.dropdown .kek:hover, .kekactive { color: #000000 !important; background: #ff0; text-decoration: underline; }
+.dropdown .narancs:hover, .narancsactive { color: #000000 !important; background: #ff0; text-decoration: underline; }
+.dropdown .rozsaszin:hover, .rozsaszinactive { color: #000000 !important; background: #ff0; text-decoration: underline; }
+.dropdown .zold:hover, .zoldactive { color: #000000 !important; background: #ff0; text-decoration: underline; }
+.dropdown .narancs2:hover, .narancs2active { color: #000000 !important; background: #ff0; text-decoration: underline; }
+
+.white-bg { background: #000000; }
+
+.cont_title { font-size: 20px; }
+.cont_text { color: #ffffff; }
+
+.cont_text h2, h2 { color: #ff0 !important; }
+
+.sidebar { background: #000; }
+.sidebar h4 { color: #ff0 !important; font-size: 20px; }
+.sidebar_box { color: #fff; font-size: 18px; }
+
+.news_content { font-size: 18px; line-height: 30px; }
+
+.footer { background: #000; }

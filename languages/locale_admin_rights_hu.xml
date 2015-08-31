@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<area name="admin_rights" lang="hu">
+    <variable name="confirm_del"><![CDATA[Valóban törölni szeretné a jogosultságot?]]></variable>
+    <variable name="error_functions"><![CDATA[Legalább egy Funkciót ki kell választani!]]></variable>
+    <variable name="error_group"><![CDATA[Legalább egy Csoportot ki kell választani!]]></variable>
+    <variable name="error_group_exists"><![CDATA[Az egyik csoport már hozzá van kapcsolva a modulhoz vagy a tartalomhoz!]]></variable>
+    <variable name="error_modules1"><![CDATA[Ki kell választani egy elemet a Modulok vagy a Tartalmak mezõnél!]]></variable>
+    <variable name="error_modules2"><![CDATA[Vagy Modult vagy Tartalmat lehet választani!]]></variable>
+    <variable name="error_name"><![CDATA[Nem töltötte ki a Jogosultság név mezõt!]]></variable>
+    <variable name="error_name_exists"><![CDATA[Ilyen nevû jogosultság már létezik!]]></variable>
+    <variable name="error_not_exists"><![CDATA[Nem létezik ilyen jogosultság!]]></variable>
+    <variable name="error_permission_denied"><![CDATA[Hozzáférés megtagadva!]]></variable>
+    <variable name="field_adminby"><![CDATA[szerint]]></variable>
+    <variable name="field_contents"><![CDATA[Tartalmak]]></variable>
+    <variable name="field_functions"><![CDATA[Funkciók]]></variable>
+    <variable name="field_groups"><![CDATA[Csoportok]]></variable>
+    <variable name="field_header"><![CDATA[Jogosultságok]]></variable>
+    <variable name="field_modules_admin"><![CDATA[Adminisztrációs modulok]]></variable>
+    <variable name="field_modules_index"><![CDATA[Fõoldali modulok]]></variable>
+    <variable name="field_name"><![CDATA[Jogosultság név]]></variable>
+    <variable name="field_order"><![CDATA[sorrendben]]></variable>
+    <variable name="field_orderasc"><![CDATA[növekvõ]]></variable>
+    <variable name="field_orderby"><![CDATA[Rendezés]]></variable>
+    <variable name="field_orderdesc"><![CDATA[csökkenõ]]></variable>
+    <variable name="field_submitorder"><![CDATA[Rendezés]]></variable>
+    <variable name="form_required_note"><![CDATA[A <span class='required'>*</span>-gal jelölt mezõk kitöltése kötelezõ!]]></variable>
+    <variable name="form_reset"><![CDATA[Mégsem]]></variable>
+    <variable name="form_submit"><![CDATA[Rendben]]></variable>
+    <variable name="list_action"><![CDATA[Mûvelet]]></variable>
+    <variable name="list_contents"><![CDATA[Tartalom címe]]></variable>
+    <variable name="list_delete"><![CDATA[Törlés]]></variable>
+    <variable name="list_modify"><![CDATA[Módosítás]]></variable>
+    <variable name="list_module"><![CDATA[Modul neve]]></variable>
+    <variable name="list_name"><![CDATA[Jogosultság neve]]></variable>
+    <variable name="main_title"><![CDATA[Jogosultságok]]></variable>
+    <variable name="tabs_title"><![CDATA[Jogosultságkezelés]]></variable>
+    <variable name="title_add"><![CDATA[Jogosultság hozzáadása]]></variable>
+    <variable name="title_list"><![CDATA[Jogosultságok listája]]></variable>
+    <variable name="title_mod"><![CDATA[Jogosultság módosítása]]></variable>
+    <variable name="title_new"><![CDATA[Új jogosultság]]></variable>
+    <variable name="warning_empty_list"><![CDATA[Nincs egyetlen Jogosultság sem!]]></variable>
+</area>

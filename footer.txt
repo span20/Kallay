@@ -1,0 +1,14 @@
+{foreach from=$bottommenu item=data name="bottommenu"}
+                <div style="float: left; width: 170px; padding: 0 10px 0 0;">
+                    <div>
+                        <a style="font-weight: bold; text-transform: uppercase;" href="index.php?mid={$data.menu_id}">{$data.menu_name}</a>
+                    </div>
+                    {if $data.element}
+                        <div>
+                            {foreach from=$data.element item=sub name="bottomsub"}
+                                <a href="index.php?mid={$sub.menu_id}">{$sub.menu_name}</a><br />
+                            {/foreach}
+                        </div>
+                    {/if}
+                </div>
+            {/foreach}

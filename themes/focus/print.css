@@ -1,0 +1,13 @@
+@media print{
+	body {
+		font-size: 12pt;
+		font-family: "Times New Roman", Times, serif;
+		line-height: 1.5em;
+	}
+	.noprint, .hidden {
+		display: none;
+	}
+	.printonly {
+		display: block;
+	}
+}

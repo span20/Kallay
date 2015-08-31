@@ -1,0 +1,526 @@
+{if $smarty.session.user_id}
+	<script src="http://code.createjs.com/easeljs-0.5.0.min.js"></script>
+	<script src="http://code.createjs.com/tweenjs-0.3.0.min.js"></script>
+	<script src="http://code.createjs.com/movieclip-0.5.0.min.js"></script>
+	<script src="http://code.createjs.com/soundjs-0.4.0.min.js"></script>
+	<script src="http://code.createjs.com/preloadjs-0.2.0.min.js"></script>
+	<script src="includes/vizertek.js"></script>
+
+	<script>
+	{literal}
+	var canvas, stage, exportRoot, alma, szorp, virag, csepp_cont_1, csepp_cont_2, csepp_cont_3, tartaly, kerek1, kerek2, kerek3, elfolytviz = 0, 
+	meter1, meter2, meter3, almaviz = 0, szorpviz = 0, viragviz = 0, intro, indit_btn, eredmeny_back, end, end_cont, new_btn, oratikk, csepeg, ovacio, rosszvalasz;
+	var kerekStates = new Array(0, 0, 0);
+	var cseppStates = new Array(0, 0, 0);
+	var cseppek = new Array();
+
+	function init() {
+		canvas = document.getElementById("canvas");
+		images = images||{};
+
+		var manifest = [
+			{src:"themes/focus/images/alma.png", id:"alma"},
+			{src:"themes/focus/images/csepp_1.png", id:"csepp_1"},
+			{src:"themes/focus/images/csepp_2.png", id:"csepp_2"},
+			{src:"themes/focus/images/jatek_back.jpg", id:"jatek_back"},
+			{src:"themes/focus/images/kerek.png", id:"kerek"},
+			{src:"themes/focus/images/szorp.png", id:"szorp"},
+			{src:"themes/focus/images/intro.jpg", id:"intro"},
+			{src:"themes/focus/images/indit_btn.png", id:"indit_btn"},
+			{src:"themes/focus/images/virag.png", id:"virag"},
+			{src:"themes/focus/images/eredmeny_back.jpg", id:"eredmeny_back"},
+			{src:"themes/focus/images/end_1.png", id:"end_1"},
+			{src:"themes/focus/images/end_2.png", id:"end_2"},
+			{src:"themes/focus/images/end_3.png", id:"end_3"},
+			{src:"themes/focus/images/end_4.png", id:"end_4"},
+			{src:"themes/focus/images/end_5.png", id:"end_5"},
+			{src:"themes/focus/images/end_6.png", id:"end_6"},
+			{src:"themes/focus/images/end_7.png", id:"end_7"},
+			{src:"themes/focus/images/new_btn.png", id:"new_btn"}
+		];
+
+		var loader = new createjs.PreloadJS(false);
+		loader.onFileLoad = handleFileLoad;
+		loader.onComplete = handleComplete;
+		loader.loadManifest(manifest);
+	}
+
+	function handleFileLoad(o) {
+		if (o.type == "image") { images[o.id] = o.result; }
+	}
+
+	function handleComplete() {
+		exportRoot = new lib.web_jatek();
+
+		stage = new createjs.Stage(canvas);
+		stage.addChild(exportRoot);
+		
+		csepp_cont_1 = new lib.csepp_cont_1();
+		csepp_cont_1.x = 106;
+		csepp_cont_1.y = 520;
+		//csepp_cont_1.addChild(new lib.cseppek());
+		cseppek.push(csepp_cont_1);
+		
+		csepp_cont_2 = new lib.csepp_cont_2();
+		csepp_cont_2.x = 466;
+		csepp_cont_2.y = 520;
+		//csepp_cont_2.addChild(new lib.cseppek());
+		cseppek.push(csepp_cont_2);
+		
+		csepp_cont_3 = new lib.csepp_cont_3();
+		csepp_cont_3.x = 286;
+		csepp_cont_3.y = 520;
+		//csepp_cont_3.addChild(new lib.cseppek());
+		cseppek.push(csepp_cont_3);
+		
+		stage.addChild(csepp_cont_1);
+		stage.addChild(csepp_cont_2);
+		stage.addChild(csepp_cont_3);
+		
+		kerek1 = new lib.kerekMc();
+		kerek1.num = 0;
+		kerek1.onPress = kerekClicked;
+		kerek1.x = 46;
+		kerek1.y = 120;
+		
+		kerek2 = new lib.kerekMc();
+		kerek2.num = 1;
+		kerek2.onPress = kerekClicked;
+		kerek2.x = 128;
+		kerek2.y = 120;
+		
+		kerek3 = new lib.kerekMc();
+		kerek3.num = 2;
+		kerek3.onPress = kerekClicked;
+		kerek3.x = 207;
+		kerek3.y = 120;
+		
+		intro = new lib.intro();
+		stage.addChild(intro);
+		
+		indit_btn = new lib.indit_btn();
+		indit_btn.x = 180;
+		indit_btn.y = 620;
+		indit_btn.onPress = startGame;
+		indit_btn.onMouseOver = function(e) {
+			document.body.style.cursor = "pointer";
+		}
+		indit_btn.onMouseOut = function(e) {
+			document.body.style.cursor = "default";
+		}
+		stage.addChild(indit_btn);
+		
+		stage.enableMouseOver(15);
+		
+		stage.update();
+
+		createjs.Sound.registerSound("themes/focus/sounds/oratiktakk.mp3|themes/focus/sounds/oratiktakka.ogg", "oratiktakk");
+		createjs.Sound.registerSound("themes/focus/sounds/folyik.mp3|themes/focus/sounds/folyik.ogg", "csepeg");		
+		createjs.Sound.registerSound("themes/focus/sounds/ovacio.mp3|themes/focus/sounds/ovacio.ogg", "ovacio");
+		createjs.Sound.registerSound("themes/focus/sounds/rosszvalasz.mp3|themes/focus/sounds/rosszvalasz.ogg", "rosszvalasz");
+		
+		oratikk = createjs.Sound.play("oratiktakk", createjs.Sound.INTERRUPT_NONE, 0, 0, -1, 0.4);
+		oratikk.stop();
+		
+		csepeg = createjs.Sound.play("csepeg", createjs.Sound.INTERRUPT_NONE, 0, 0, -1, 0.4);
+		csepeg.stop();
+		
+		rosszvalasz = createjs.Sound.play("rosszvalasz", createjs.Sound.INTERRUPT_NONE, 0, 0, 0, 0.4);
+		rosszvalasz.stop();
+		
+		ovacio = createjs.Sound.play("ovacio", createjs.Sound.INTERRUPT_NONE, 0, 0, 0, 0.4);
+		ovacio.stop();
+		
+		createjs.Ticker.setFPS(50);
+		
+		//startGame();
+	}
+
+	function startGame() {
+
+		stage.removeChild(indit_btn);
+		stage.removeChild(intro);
+
+		addMouseOver();
+
+		stage.addChild(kerek1);
+		stage.addChild(kerek2);
+		stage.addChild(kerek3);
+		
+		alma = new lib.alma();
+		alma.x = 76;
+		alma.y = 560;
+		stage.addChild(alma);
+		
+		szorp = new lib.szorp();
+		szorp.x = 265;
+		szorp.y = 551;
+		stage.addChild(szorp);
+		
+		virag = new lib.virag();
+		virag.x = 434;
+		virag.y = 546;
+		stage.addChild(virag);
+		
+		var g = new createjs.Graphics();
+		g.beginFill(createjs.Graphics.getRGB(0, 177, 235, 0.5));
+		g.drawRoundRectComplex(0, 0, 206, 54, 0, 0, 8, 8);
+		
+		tartaly = new createjs.Shape(g);
+		tartaly.x = 26;
+		tartaly.y = 34;
+		
+		stage.addChild(tartaly);
+		stage.update();
+		
+		oratikk = createjs.Sound.play("oratiktakk", createjs.Sound.INTERRUPT_NONE, 0, 0, -1, 0.4);
+		
+		setTimeout("letsBegin()", 30000);
+
+	}
+
+	function letsBegin() {
+		oratikk.stop();
+		createjs.Ticker.addListener(window);
+		
+		csepeg = createjs.Sound.play("csepeg", createjs.Sound.INTERRUPT_NONE, 0, 0, -1, 0.4);
+		
+		for (var i = 0; i < kerekStates.length; i++) {
+			switch(i) {
+				case 0:
+					createjs.Tween.get(kerek1, {override:true}).to({rotation: 180}, 1000);
+				break;
+				case 1:
+					createjs.Tween.get(kerek2, {override:true}).to({rotation: 180}, 1000);
+				break;
+				case 2:
+					createjs.Tween.get(kerek3, {override:true}).to({rotation: 180}, 1000);
+				break;
+			}
+			kerekStates[i] = 1;
+		}
+	}
+
+	function kerekClicked(e) {
+		var actKerek = e.target;
+		var nyitottak = 0;
+		
+		for (var i = 0; i < kerekStates.length; i++) {
+			if (kerekStates[i] == 1) {
+				nyitottak++;
+			}
+		}
+		
+		if (kerekStates[actKerek.num] == 0) {
+			var rot = 180;
+			kerekStates[actKerek.num] = 1;
+		} else if(nyitottak > 1) {
+			var rot = 0;
+			kerekStates[actKerek.num] = 0;
+		}
+		createjs.Tween.get(actKerek, {override:true}).to({rotation: rot}, 1000);
+		
+	}
+
+	function tick() {
+
+		for (var i = 0; i < kerekStates.length; i++) {
+			if (kerekStates[i] == 1) {
+				if (cseppStates[i] == 0) {
+					cseppek[i].addChild(new lib.cseppek());
+					cseppStates[i] = 1;
+				}
+			}
+			
+			if (kerekStates[i] == 0) {
+				if (cseppStates[i] == 1) {
+					cseppek[i].removeAllChildren();
+					cseppStates[i] = 0;
+				}
+			}
+		}
+		
+		for (var i = 0; i < cseppStates.length; i++) {
+			if (cseppStates[i] == 1) {
+				elfolytviz += 0.001;
+				
+				var vizarany = (3-elfolytviz)/3;
+				if (vizarany > 0) {
+					stage.removeChild(tartaly);
+			
+					var rectH = 54*vizarany;
+			
+					var g = new createjs.Graphics();
+					g.beginFill(createjs.Graphics.getRGB(0, 177, 235, 0.5));
+					g.drawRoundRectComplex(0, 0, 206, rectH, 0, 0, 8, 8);
+					
+					tartaly = new createjs.Shape(g);
+					tartaly.x = 26;
+					tartaly.y = 34+(54-rectH);
+
+					stage.addChild(tartaly);
+					
+					switch(i) {
+						case 0:
+							almaviz += 0.001;
+							var vizarany2 = almaviz/0.2;
+							if (vizarany2 < 1) {
+								var meterH = 67*vizarany2;
+								var g = new createjs.Graphics();
+								g.beginFill(createjs.Graphics.getRGB(0, 177, 235, 1));
+								g.drawRect(0, 0, 7, meterH);
+								stage.removeChild(meter1);
+								meter1 = new createjs.Shape(g);
+								meter1.x = 54;
+								meter1.y = 623-meterH;
+								stage.addChild(meter1);
+							}
+						break;
+						case 1:
+							viragviz += 0.001;
+							var vizarany2 = viragviz/0.8;
+							if (vizarany2 < 1) {
+								var meterH = 67*vizarany2;
+								var g = new createjs.Graphics();
+								g.beginFill(createjs.Graphics.getRGB(0, 177, 235, 1));
+								g.drawRect(0, 0, 7, meterH);
+								stage.removeChild(meter3);
+								meter3 = new createjs.Shape(g);
+								meter3.x = 411;
+								meter3.y = 623-meterH;
+								stage.addChild(meter3);
+							}
+						break;
+						case 2:
+							szorpviz += 0.001;
+							var vizarany2 = szorpviz/2;
+							if (vizarany2 < 1) {
+								var meterH = 67*vizarany2;
+								var g = new createjs.Graphics();
+								g.beginFill(createjs.Graphics.getRGB(0, 177, 235, 1));
+								g.drawRect(0, 0, 7, meterH);	
+								stage.removeChild(meter2);
+								meter2 = new createjs.Shape(g);
+								meter2.x = 243;
+								meter2.y = 623-meterH;
+								stage.addChild(meter2);
+							}
+						break;
+					}
+				} else {
+					createjs.Ticker.removeListener(window);
+					showResult();
+					break;
+				}
+			}
+		}
+		
+		stage.update();
+	}
+
+	function showResult() {
+	
+		csepeg.stop();
+
+		for(var cs = 0; cs < cseppek.length; cs++) {
+			cseppek[cs].removeAllChildren();
+		}
+		
+		$.ajax({
+			url: 'ajax.php?act=saveResult'
+		});
+		
+		stage.removeChild(meter1);
+		stage.removeChild(meter2);
+		stage.removeChild(meter3);
+		
+		var  alma_percent = Math.round((almaviz/0.2)*100);
+		var  szorp_percent = Math.round((szorpviz/2)*100);
+		var  virag_percent = Math.round((viragviz/0.8)*100);
+		
+		console.log('alma: '+alma_percent+' - szorp: '+szorp_percent+' - virag: '+virag_percent);
+		
+		if (alma_percent < 95 && szorp_percent < 95 && virag_percent < 95) {
+			end = new lib.end_7();
+			rosszvalasz.play();
+		} else if (alma_percent < 95 && szorp_percent > 95 && virag_percent < 95) {
+			end = new lib.end_6();
+			rosszvalasz.play();
+		} else if (alma_percent > 95 && szorp_percent < 95 && virag_percent < 95) {
+			end = new lib.end_5();
+			rosszvalasz.play();
+		} else if (alma_percent > 95 && szorp_percent > 95 && virag_percent < 95) {
+			end = new lib.end_4();
+			rosszvalasz.play();
+		} else if (alma_percent > 95 && szorp_percent < 95 && virag_percent > 95) {
+			end = new lib.end_3();
+			rosszvalasz.play();
+		} else if (alma_percent < 95 && szorp_percent > 95 && virag_percent > 95) {
+			end = new lib.end_2();
+			rosszvalasz.play();
+		} else if (alma_percent > 95 && szorp_percent > 95 && virag_percent > 95) {
+			end = new lib.end_1();
+			ovacio.play();
+		}
+		
+		eredmeny_back = new lib.eredmeny_back();
+		
+		stage.addChild(eredmeny_back);
+		end_cont = new lib.end_cont();
+		end_cont.addChild(end);
+		end_cont.x = 0;
+		end_cont.y = 100;
+		
+		var vizarany;
+		var meterH;
+		var metere;
+		
+		vizarany = szorpviz/2;
+		if (vizarany > 1) vizarany = 1;
+		meterH = 67*vizarany;
+		var g = new createjs.Graphics();
+		g.beginFill(createjs.Graphics.getRGB(0, 177, 235, 1));
+		g.drawRect(0, 0, 7, meterH);	
+		metere = new createjs.Shape(g);
+		metere.x = 230;
+		metere.y = 175-meterH;
+		end_cont.addChild(metere);
+		
+		vizarany = viragviz/0.8;
+		if (vizarany > 1) vizarany = 1;
+		meterH = 67*vizarany;
+		var g = new createjs.Graphics();
+		g.beginFill(createjs.Graphics.getRGB(0, 177, 235, 1));
+		g.drawRect(0, 0, 7, meterH);	
+		metere = new createjs.Shape(g);
+		metere.x = 398;
+		metere.y = 175-meterH;
+		end_cont.addChild(metere);
+		
+		vizarany = almaviz/0.2;
+		if (vizarany > 1) vizarany = 1;
+		meterH = 67*vizarany;
+		var g = new createjs.Graphics();
+		g.beginFill(createjs.Graphics.getRGB(0, 177, 235, 1));
+		g.drawRect(0, 0, 7, meterH);	
+		metere = new createjs.Shape(g);
+		metere.x = 41;
+		metere.y = 175-meterH;
+		end_cont.addChild(metere);
+		
+		stage.addChild(end_cont);
+		
+		new_btn = new lib.new_btn();
+		new_btn.onMouseOver = function(e) {
+			document.body.style.cursor = "pointer";
+		}
+		new_btn.onMouseOut = function(e) {
+			document.body.style.cursor = "default";
+		}
+		new_btn.onPress = restart;
+		stage.addChild(end_cont);
+		new_btn.x = 180;
+		new_btn.y = 620;
+		stage.addChild(new_btn);
+	}
+
+	function restart(e) {
+
+		rosszvalasz.stop();
+		ovacio.stop();
+	
+		kerekStates = new Array(0, 0, 0);
+		cseppStates = new Array(0, 0, 0);
+		elfolytviz = 0;
+		szorpviz = 0;
+		almaviz = 0;
+		viragviz = 0;
+		
+		kerek1.rotation = 0;
+		kerek2.rotation = 0;
+		kerek3.rotation = 0;
+		
+		createjs.Ticker.addListener(window);
+		
+		stage.removeChild(end_cont);
+		stage.removeChild(eredmeny_back);
+		stage.removeChild(new_btn);
+		
+		startGame();
+	}
+
+	function addMouseOver() {
+		kerek1.onMouseOver = function(e) {
+			document.body.style.cursor = "pointer";
+		}
+		kerek1.onMouseOut = function(e) {
+			document.body.style.cursor = "default";
+		}
+		kerek2.onMouseOver = function(e) {
+			document.body.style.cursor = "pointer";
+		}
+		kerek2.onMouseOut = function(e) {
+			document.body.style.cursor = "default";
+		}
+		kerek3.onMouseOver = function(e) {
+			document.body.style.cursor = "pointer";
+		}
+		kerek3.onMouseOut = function(e) {
+			document.body.style.cursor = "default";
+		}
+	}
+
+	function removeMouseOver() {
+		kerek1.onMouseOver = function(e) {
+			document.body.style.cursor = "default";
+		}
+		kerek1.onMouseOut = function(e) {
+			document.body.style.cursor = "default";
+		}
+		kerek2.onMouseOver = function(e) {
+			document.body.style.cursor = "default";
+		}
+		kerek2.onMouseOut = function(e) {
+			document.body.style.cursor = "default";
+		}
+		kerek3.onMouseOver = function(e) {
+			document.body.style.cursor = "default";
+		}
+		kerek3.onMouseOut = function(e) {
+			document.body.style.cursor = "default";
+		}
+	}
+	{/literal}
+	</script>
+	<div style="text-align: center;">
+	Belépve: {$smarty.session.usermail} | <a href="index.php?p=account&act=account_out">Kilépés</a>
+	<br />
+	<br />
+	
+	<canvas id="canvas" width="525" height="700" style="background-color:#ffffff"></canvas>
+	
+	<br />
+	<br />
+	<a href="jatekszabaly.pdf" target="_blank">Szabályzat</a>
+	</div>
+{else}
+	<script src="clearbox.js"></script>
+	<div style="clear: both; text-align: center;">
+		<a href="{$theme_dir}/images/src1_b.jpg" rel="clearbox[gallery=game]"><img src="{$theme_dir}/images/scr1.jpg"></a> 
+		<a href="{$theme_dir}/images/src2_b.jpg" rel="clearbox[gallery=game]"><img src="{$theme_dir}/images/scr2.jpg"></a>
+	</div>
+	<div style="clear: both; text-align: center;">
+		Amennyiben játszani szeretnél jelentkezz be!
+	</div>
+	{assign var="prevpage" value="game"}
+	{include file="block_account.tpl"}
+{/if}
+
+<div style="text-align: center; font-size: 14px;">
+A játékosok között naponta értékes ajándékcsomagot sorsolunk ki!
+<br />
+<br />
+<div style="text-align: center;">
+	A Cseppecske kifestõ letöltéséhez kattints a képre!<br />
+	<a href="Cseppecske_fekete_feher.pdf" target="_blank"><img src="{$theme_dir}/images/cseppecske.jpg" /></a>
+</div>

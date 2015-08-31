@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="hu" lang="hu">
+<head>
+    <title>{$sitename}{if $content_title} - {$content_title}{/if}</title>
+    <base href="{$smarty.session.site_sitehttp}/" />
+
+    <meta name="description" content="{$meta_tags.description}" />
+    <meta name="keywords" content="{$meta_tags.keywords}" />
+
+	<meta name="robots" content="index,follow" />
+	<meta name="revisit-after" content="7 days" />
+
+	<meta http-equiv="Content-Type" content="text/html; charset={$locale_charset}" />
+	<meta http-equiv="Content-Type" content="application/xhtml+xml; charset={$locale_charset}" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+
+	<link rel="shortcut icon" href="{$theme_dir}/images/favicon.ico" />
+
+	<link rel="stylesheet" type="text/css" media="screen, projection" href="{$theme_dir}/style.css" />
+
+	{foreach from=$css item=c}
+		<link rel="stylesheet" type="text/css" media="screen, projection" href="{$theme_dir}/{$c}.css" />
+	{/foreach}
+	<link rel="stylesheet" type="text/css" media="print" href="{$theme_dir}/print.css" />
+
+	{if $bannerek}
+		<script type="text/javascript">//<![CDATA[
+			bid    = new Array();
+			pid    = new Array();
+			mid    = new Array();
+			pic    = new Array();
+			width  = new Array();
+			height = new Array();
+			type   = new Array();
+			reload = new Array();
+            code   = new Array();
+
+			{$bannerek}
+		//]]>
+		</script>
+	{/if}
+
+    {if $ajax.link}<script type="text/javascript" src="{$ajax.link}"></script>{/if}
+    {if $ajax.script}
+        <script type="text/javascript">
+            //<![CDATA[{$ajax.script}//]]>
+        </script>
+    {/if}
+
+	{foreach from=$javascripts item=js}
+	{if preg_match("/\.js/", $js)}
+	    <script type="text/javascript" src="{$include_dir}/{$js}"></script>
+	{else}
+		<script type="text/javascript" src="{$include_dir}/{$js}.js"></script>
+    {/if}
+	{/foreach}
+</head>
+
+<body {if $bodyonload}onload="{foreach from=$bodyonload item=load}{$load};{/foreach}"{/if}>
+<table cellpadding="0" cellspacing="0" width="100%" height="100%">
+    <tr align="center">
+        <td>
+            <div style="width: 786px; text-align: left;">
+                {include file=header.tpl}
+                 <div style="clear: both; width: 786px; height: 410px; background: url('{$theme_dir}/images/back.gif') no-repeat;">
+                 {if ($site_errors || $site_success || $page neq "")}
+                    {if $site_errors}
+                        {foreach from=$site_errors item=data}
+                        <div style="text-align: center;">
+                            {$data.text}<br />
+                            <a href="{$data.link}" title="{$locale.config.back_link}">{$locale.config.back_link}</a>
+                        </div>
+                        {/foreach}
+                    {elseif $site_success}
+                        {foreach from=$site_success item=data}
+                        <div style="text-align: center;">
+                            {$data.text}<br />
+                            <a href="{$data.link}" title="{$locale.config.next_link}">{$locale.config.next_link}</a>
+                        </div>
+                        {/foreach}
+                    {else}
+                        {if $smarty.request.mid eq 52}
+                            <div>
+                                <div style="padding: 60px 25px 0 25px;">
+                                    <div style="float: right;">
+                                        <img src="{$theme_dir}/images/munkak_title.jpg" />
+                                    </div>
+                                    <div style="clear: both;">
+                                        {include file="$page.tpl"}
+                                    </div>
+                                </div>
+                            </div>
+                        {else}
+                            <div style="float: left; padding: 100px 0 0 25px;">
+                                <img src="{if $menu_bg_pic}{$smarty.session.site_cnt_picdir}/{$menu_bg_pic}{else}{$theme_dir}/images/menukep.jpg{/if}" />
+                            </div>
+                            <div style="width: 460px; float: right;">
+                                <div style="padding: 60px 25px 0 20px;">
+                                    <div style="float: right;">
+                                    {if $smarty.request.mid eq 49}
+                                        <img src="{$theme_dir}/images/pro_community_title.jpg" />
+                                    {elseif $smarty.request.mid eq 50}
+                                        <img src="{$theme_dir}/images/pro_communication_title.jpg" />
+                                    {elseif $smarty.request.mid eq 51}
+                                        <img src="{$theme_dir}/images/pro_coaching_title.jpg" />
+                                    {elseif $smarty.request.mid eq 52}
+                                        <img src="{$theme_dir}/images/munkak_title.jpg" />
+                                    {elseif $smarty.request.mid eq 53}
+                                        <img src="{$theme_dir}/images/kapcs_title.jpg" />
+                                    {/if}
+                                    </div>
+                                    <div style="clear: both;">
+                                        {include file="$page.tpl"}
+                                    </div>
+                                </div>
+                            </div>
+                        {/if}
+                    {/if}
+                {else}
+                    <div style="float: left; padding: 100px 0 0 25px;">
+                        <img src="{$theme_dir}/images/menukep.jpg" />
+                    </div>
+                    <div style="width: 460px; float: right;">
+                        <div style="padding: 60px 25px 0 20px;">
+                            <div style="float: right;">
+                            <h2>{$post_title}</h2>
+                            </div>
+                            <div style="clear: both;">
+                                {$post_content}
+                            </div>
+                            <div style="padding-top: 10px;"><a href="http://www.prokomm.hu/blog/{$dateForUrl}/{$post_name}" class="more-link">&raquo; Olvass tovább &laquo;</a></div>
+                        </div>
+                    </div>
+                {/if}
+                </div>
+                <div id="footer">
+                    <div style="text align: center; font-size: 10px; letter-spacing: -1px;">
+                        Prokomm Magyarország Tanácsadó Kft. <span style="color: #ed1f24;">-</span> 1148 Budapest, Örs vezér tér 3. <span style="color: #ed1f24;">-</span> (+36) 20 9554 226 <span style="color: #ed1f24;">-</span> info@prokomm.hu <span style="color: #ed1f24;">-</span> http://www.prokomm.hu
+                    </div>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

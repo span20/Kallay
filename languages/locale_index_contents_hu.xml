@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<area name="index_contents" lang="hu">
+    <variable name="error_no_config_table"><![CDATA[Hiányzik a konfigurációs tábla!]]></variable>
+    <variable name="error_no_permission"><![CDATA[Nincs hozzáférési joga ehhez a tartalomhoz!]]></variable>
+    <variable name="field_main_avgrating"><![CDATA[Értékelések átlaga:]]></variable>
+    <variable name="field_main_back"><![CDATA[vissza]]></variable>
+    <variable name="field_main_comment2"><![CDATA[hozzászólás]]></variable>
+    <variable name="field_main_lastmod"><![CDATA[Utoljára módosította]]></variable>
+    <variable name="field_main_numrating"><![CDATA[felhasználó értékelte a tartalmat.]]></variable>
+    <variable name="field_main_recommend"><![CDATA[Ajánlom másnak]]></variable>
+    <variable name="field_main_useradd"><![CDATA[Hozzáadta]]></variable>
+    <variable name="field_main_viewcounter"><![CDATA[olvasás]]></variable>
+    <variable name="field_main_yourrating"><![CDATA[Az Ön értékelése:]]></variable>
+</area>

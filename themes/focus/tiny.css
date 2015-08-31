@@ -1,0 +1,5 @@
+* {
+    box-sizing: border-box;
+}
+.col-md-6 { padding-left: 15px; padding-right: 15px; float: left; width: 50%; }
+.img-responsive { width: 100%; }
